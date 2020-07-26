@@ -160,6 +160,8 @@ public class CountriesActivity extends AppCompatActivity {
     }
 
     public void reset(View view) {
+        hideKeyboard(this);
+        editText_search.setText("");
         _countriesOpenHelper.clear();
         setDownloadedStatus(false);
     }
