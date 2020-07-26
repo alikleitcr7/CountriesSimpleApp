@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Countries</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="go">Go!</string>
+    <string name="wrong_credentials">Wrong Credentials</string>
+    <string name="search">Search</string>
+    <string name="download_description">Download the list of countries here:</string>
+    <string name="download">Download!</string>
+    <string name="loading">Loading...</string>
+    <string name="countries_downloaded">Got %d countries, %d was inserted </string>
+    <string name="load">Load</string>
+    <string name="downloading">Loading...</string>
+    <string name="check_connection">Something went wrong, check internet connection!</string>
+    <string name="reset_all">Reset All</string>
+    <string name="reset">Reset</string>
+    <string name="max_count">Max count:</string>
+    <string name="showing_countries">Showing %d countries</string>
+</resources>

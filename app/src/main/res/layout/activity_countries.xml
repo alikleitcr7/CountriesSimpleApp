@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CountriesActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_downloadContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:visibility="gone"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@id/textView_downloadDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download_description"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@id/view_downloadContainer"
+            app:layout_constraintLeft_toLeftOf="@id/view_downloadContainer"
+            app:layout_constraintRight_toRightOf="@id/view_downloadContainer"
+            app:layout_constraintTop_toTopOf="@id/view_downloadContainer"
+            android:textSize="24sp"
+            />
+
+        <Button
+            android:id="@+id/button_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="download"
+            app:layout_constraintTop_toBottomOf="@+id/textView_downloadDescription"
+            app:layout_constraintLeft_toLeftOf="@+id/view_downloadContainer"
+            app:layout_constraintRight_toRightOf="@+id/view_downloadContainer"
+            android:text="@string/download"
+            />
+
+
+        <TextView
+            android:id="@+id/textView_downloadProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:visibility="invisible"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/button_download"
+            />
+
+
+
+
+
+        <Button
+            android:id="@+id/button_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="load"
+            app:layout_constraintTop_toBottomOf="@+id/textView_downloadProgress"
+            app:layout_constraintLeft_toLeftOf="@+id/view_downloadContainer"
+            app:layout_constraintRight_toRightOf="@+id/view_downloadContainer"
+            android:text="@string/load"
+            android:visibility="invisible"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/view_mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editText_search"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/search"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/button_search"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="doSearch"
+            android:text="@string/search"
+            app:layout_constraintRight_toLeftOf="@id/button_clear"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="reset"
+            android:text="@string/reset"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@id/button_search"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView_displayMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_search" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_countPerPage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_displayMessage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/max_count"
+                android:layout_marginRight="10dp"
+                />
+
+            <RadioButton
+                android:id="@+id/radio_count10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setCount"
+                android:checked="true"
+                android:text="10" />
+
+            <RadioButton
+                android:id="@+id/radio_count20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setCount"
+                android:text="20"
+                />
+
+        </RadioGroup>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_countries"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioGroup_countPerPage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
