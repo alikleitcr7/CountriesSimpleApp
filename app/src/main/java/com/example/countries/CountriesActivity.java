@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class CountriesActivity extends AppCompatActivity {
     private TextView textView_downloadDescription;
     private TextView textView_downloadProgress;
     private TextView textView_displayMessage;
+    private TextView textView_welcome;
 
     private TextView editText_search;
 
@@ -52,17 +54,18 @@ public class CountriesActivity extends AppCompatActivity {
 
     // Name of shared preferences file
     private String sharedPrefFile = "com.example.android.CountriesPreferences";
+    private String userName = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_countries);
 
-
         // init elements
         textView_downloadDescription = findViewById(R.id.textView_downloadDescription);
         textView_downloadProgress = findViewById(R.id.textView_downloadProgress);
         textView_displayMessage = findViewById(R.id.textView_displayMessage);
+        textView_welcome = findViewById(R.id.textView_welcome);
 
         editText_search = findViewById(R.id.editText_search);
 
@@ -97,12 +100,23 @@ public class CountriesActivity extends AppCompatActivity {
 
         setDownloadedStatus(count > 0);
 
+        // get intent extras
+        Intent intent = getIntent();
+        userName = intent.getStringExtra(LoginActivity.USER_NAME);
+
+        if (userName == null){
+            view_downloadContainer.setVisibility(View.GONE);
+            view_mainContainer.setVisibility(View.GONE);
+        }
+        else{
+            textView_welcome.setText(String.format(getString(R.string.welcome), userName));
+        }
     }
 
     public void initAdapter() {
 
         // Create an adapter and supply the data to be displayed.
-        _countriesAdapter = new CountriesAdapter(this, _countriesOpenHelper,textView_displayMessage);
+        _countriesAdapter = new CountriesAdapter(this, _countriesOpenHelper, textView_displayMessage);
         // Connect the adapter with the recycler view.
         _recyclerView.setAdapter(_countriesAdapter);
         // Give the recycler view a default layout manager.

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">البلدان</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="go">تسجيل!</string>
+    <string name="wrong_credentials">معلومات خطأ</string>
+    <string name="search">ابحث</string>
+    <string name="download_description">لتحميل البلدان:</string>
+    <string name="download">تحميل!</string>
+    <string name="loading">جاري التحميل...</string>
+    <string name="countries_downloaded">حصل على %d بلدان, %d و تم اضافة </string>
+    <string name="load">اظهر المعلومات</string>
+    <string name="downloading">جاري التحميل...</string>
+    <string name="check_connection">حصل خطا, تأكد من الاتصال بالشبكة!</string>
+    <string name="reset_all">اعادة تشغيل</string>
+    <string name="reset">اعادة</string>
+    <string name="max_count">الكمية القصوى:</string>
+    <string name="showing_countries">اظهار %d بلدان</string>
+    <string name="welcome">مرحبا %s,</string>
+</resources>
